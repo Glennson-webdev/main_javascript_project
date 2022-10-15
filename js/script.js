@@ -1,47 +1,18 @@
-/*const playerName = prompt("What is your name?");
+let playerSelection = '', computerSelection = '';
+let playerScore = 0, computerScore = 0, tie = 0;
+const selectOptions = ["rock","scissors","paper"];
 
-let welcomeMessage = (`Hello ${playerName}, welcome to the Rock, Paper, Scissors game!`)
-
-alert(welcomeMessage);
-
-let rules = `Steps: 
-\n 1. player chooses between Rock, Paper, or Scissors. 
-\n 2. Simutaneously, computer will randomly select between Rock, Paper, or Scissors.
-\n\n How to Win:
-\n - Rock > Scissors
-\n - Scissors > Paper
-\n - Paper > Rock`;
-
-alert(`Please read the following rules: \n\n${rules}`) */
-
-let playerScore = 0;
-let computerScore = 0;
-let tie = 0;
-
-                                        /***get player selection***/
-function playerPlay(playerSelection) {
-  playerSelection = prompt("Please select: rock, paper, or scissors.");
-  playerSelection = playerSelection.toLowerCase();
-  if (
-    playerSelection === "rock" ||
-    playerSelection === "scissors" ||
-    playerSelection === "paper"
-  ) {
-    return playerSelection;
-  } else {
-    alert("Please type Rock, Paper, or Scissors");
-  }
-  return;
+/***get player input***/
+function playerPlay() {
+  let playerInput = prompt("Please select: rock, paper, or scissors.").toLowerCase();
+   
+    while(playerInput.length === 0 ||  selectOptions.indexOf(playerInput) === -1){
+        playerInput = prompt("Invalid input! Please select: rock, paper, or scissors");
+    }
+    return playerInput;
 }
-                                        /***function playerPlay() console test***/
-/*
-console.log(userPlay('paper'));
-console.log(userPlay('Papper'));
-*/
 
-                                        /***get computer random selection***/
-//Math.random to choose between number between 0 and 2
-//Math.floor to get whole number between 0 and 2
+/***function playerPlay() console test***/
 function computerPlay() {
   const randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
@@ -54,14 +25,7 @@ function computerPlay() {
   }
 }
 
-                                        /***function computerPlay() console test***/
-/*
-console.log (computerPlay());
-console.log (computerPlay());
-console.log (computerPlay());
-*/
-
-                                        /***get winner between playerSelection, computerSelection***/
+/***get winner between playerSelection, computerSelection***/
 function getWinner(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     tie++;
@@ -95,10 +59,9 @@ function getWinner(playerSelection, computerSelection) {
     }
   }
 }
-
-function playRound(playerSelection, computerSelection) {
-  playerSelection = playerPlay();
-  computerSelection = computerPlay();
+function playRound() {
+  let playerSelection = playerPlay();
+  let computerSelection = computerPlay();
   console.log(`Player: ${playerSelection}`);
   console.log(`Computer: ${computerSelection}`);
 
@@ -106,13 +69,7 @@ function playRound(playerSelection, computerSelection) {
 
   return;
 }
-
-                                        /***function playRound() single game***/
-/*
-playRound()
-*/
-
-                                        /***function game() 5 round game***/
+/***function game() 5 round game***/
 function game() {
   for (let i = 0; i < 5; i++) {
     playRound();
