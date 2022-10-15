@@ -12,7 +12,7 @@ function playerPlay() {
     return playerInput;
 }
 
-/***function playerPlay() console test***/
+/***get computer random input***/
 function computerPlay() {
   const randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
