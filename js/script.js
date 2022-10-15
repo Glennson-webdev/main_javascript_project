@@ -18,8 +18,8 @@ let playerScore = 0;
 let computerScore = 0;
 let tie = 0;
 
-/***get player selection***/
-function userPlay(playerSelection) {
+                                        /***get player selection***/
+function playerPlay(playerSelection) {
   playerSelection = prompt("Please select: rock, paper, or scissors.");
   playerSelection = playerSelection.toLowerCase();
   if (
@@ -33,7 +33,7 @@ function userPlay(playerSelection) {
   }
   return;
 }
-                                        /***function userPlay() console test***/
+                                        /***function playerPlay() console test***/
 /*
 console.log(userPlay('paper'));
 console.log(userPlay('Papper'));
@@ -97,10 +97,10 @@ function getWinner(playerSelection, computerSelection) {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = userPlay();
+  playerSelection = playerPlay();
   computerSelection = computerPlay();
-  console.log(`user: ${playerSelection}`);
-  console.log(`computer: ${computerSelection}`);
+  console.log(`Player: ${playerSelection}`);
+  console.log(`Computer: ${computerSelection}`);
 
   console.log(getWinner(playerSelection, computerSelection));
 
@@ -112,6 +112,7 @@ function playRound(playerSelection, computerSelection) {
 playRound()
 */
 
+                                        /***function game() 5 round game***/
 function game() {
   for (let i = 0; i < 5; i++) {
     playRound();
